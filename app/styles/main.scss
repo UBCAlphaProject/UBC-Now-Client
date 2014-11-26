@@ -1,6 +1,8 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+@import "bootstrap-material-design/sass/material.scss";
+@import "bootstrap-material-design/sass/ripples.scss";
 // endbower
 
 .browsehappy {
@@ -14,6 +16,8 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 body {
   padding-top: 20px;
   padding-bottom: 20px;
+  background-color: #eee;
+  font-family: 'Open Sans';
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -88,5 +92,22 @@ body {
   /* Remove the bottom border on the jumbotron for visual effect */
   .jumbotron {
     border-bottom: 0;
+  }
+}
+
+$fg-color: black;
+$fg-color-2: #444;
+
+.feed {
+  .item {
+    position: relative;
+    .title {
+      color: $fg-color;
+      font-size: 2.2rem;
+      font-weight: 100;
+    }
+    p {
+      font-color: $fg-color-2;
+    }
   }
 }
