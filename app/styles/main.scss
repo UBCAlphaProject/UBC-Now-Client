@@ -1,8 +1,6 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
-@import "bootstrap-material-design/sass/material.scss";
-@import "bootstrap-material-design/sass/ripples.scss";
 // endbower
 
 .browsehappy {
@@ -101,13 +99,17 @@ $fg-color-2: #444;
 .feed {
   .item {
     position: relative;
-    .title {
-      color: $fg-color;
-      font-size: 2.2rem;
-      font-weight: 100;
-    }
-    p {
-      font-color: $fg-color-2;
+    .card-actions {
+      position: absolute;
+      top: 0;
+      right: 0;
+      a {
+        padding: 0;
+        margin: 0;
+        i {
+          font-size: 14pt;
+        }
+      }
     }
   }
 }

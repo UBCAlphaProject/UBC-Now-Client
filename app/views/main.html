@@ -1,6 +1,13 @@
 <div class="feed">
-  <div class="item well" ng-repeat="item in items">
-    <div class="title">{{item.name}}</div>
-    <p>{{item.body}}</p>
+  <div class="card item card-default" ng-repeat="item in items">
+    <div class="card-body">
+      <h3>{{item.name}}</h3>
+      {{item.body}}
+    </div>
+    <div class="card-actions" ng-class="{flip: item.flipped}">
+      <a class="btn" ng-click="flip(item)">
+        <i class="mdi-navigation-more-vert"></i>
+      </a>
+    </div>
   </div>
 </div>

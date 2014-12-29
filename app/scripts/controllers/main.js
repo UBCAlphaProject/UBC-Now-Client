@@ -16,6 +16,9 @@ angular.module('ubcNowClientApp')
       name: "You've got class!",
       body: 'Woof'
     }];
+    $scope.flip = function(item) {
+      item.flipped = !item.flipped;
+    }
     var moving = [];
     $('body').on('mousedown', '.item', function(e) {
       console.log('woof', e);
