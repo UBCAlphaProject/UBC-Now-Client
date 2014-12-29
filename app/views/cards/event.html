@@ -1,0 +1,11 @@
+<div ng-class="{visible: configMode}" class="config">
+  Config Options go here
+</div>
+<ul class="events">
+  <li ng-repeat="event in options.events">
+    <a href="{{event.link}}">
+      <h4>{{event.name}}</h4>
+      <small>{{event.type}} - {{event.date}}</small>
+    </a>
+  </li>
+</ul>

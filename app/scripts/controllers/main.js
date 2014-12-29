@@ -1,4 +1,5 @@
 'use strict';
+/*global angular, $, _*/
 
 /**
  * @ngdoc function
@@ -10,15 +11,20 @@
 angular.module('ubcNowClientApp')
   .controller('MainCtrl', function ($scope) {
     $scope.items = [{
-      name: "You've got class!",
-      body: 'Woof'
+      name: 'Campus Events',
+      type: 'event',
+      options: {
+        events: [{
+          name: 'Student Leadership Conference',
+          type: 'Student Life',
+          date: new Date(),
+          link: 'http://students.ubc.ca/slc'
+        }]
+      }
     }, {
-      name: "You've got class!",
-      body: 'Woof'
+      name: 'Classes Today',
+      type: 'classes'
     }];
-    $scope.flip = function(item) {
-      item.flipped = !item.flipped;
-    }
     var moving = [];
     $('body').on('mousedown', '.item', function(e) {
       console.log('woof', e);
@@ -35,10 +41,25 @@ angular.module('ubcNowClientApp')
         });
       });
     }).on('mouseup', function(e) {
-      moving = [];
-      $('.item').animate({
-        left: 0,
-        opacity: 1
+      _.each(moving, function(v) {
+        var elem = v[0];
+        var x = v[1];
+        var left = e.clientX - x;
+        if (Math.abs(left) > 100) {
+          var i = $(elem).index();
+          $(elem).animate({ opacity: 0, left: left * 2, height: 0 }, {
+            complete: function() {
+              $scope.items.splice(i, 1);
+              $scope.$apply();
+            }
+          });
+        } else {
+          $(elem).animate({
+            left: 0,
+            opacity: 1
+          });
+        }
       });
+      moving = [];
     });
   });

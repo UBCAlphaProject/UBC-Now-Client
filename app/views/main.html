@@ -2,12 +2,14 @@
   <div class="card item card-default" ng-repeat="item in items">
     <div class="card-body">
       <h3>{{item.name}}</h3>
-      {{item.body}}
+      <event ng-if="item.type == 'event'" options="item.options" config-mode="item.configMode"></event>
+      <classes ng-if="item.type == 'classes'" options="item.options" config-mode="item.configMode"></event>
     </div>
-    <div class="card-actions" ng-class="{flip: item.flipped}">
-      <a class="btn" ng-click="flip(item)">
+    <div class="card-actions">
+      <a class="btn" ng-click="item.configMode = !item.configMode">
         <i class="mdi-navigation-more-vert"></i>
       </a>
     </div>
   </div>
+  <a class="btn btn-default card btn-block">More</a>
 </div>
