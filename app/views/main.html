@@ -3,7 +3,8 @@
     <div class="card-body">
       <h3>{{item.name}}</h3>
       <event ng-if="item.type == 'event'" options="item.options" config-mode="item.configMode"></event>
-      <classes ng-if="item.type == 'classes'" options="item.options" config-mode="item.configMode"></event>
+      <directions ng-if="item.type == 'directions'" options="item.options" config-mode="item.configMode"></directions>
+      <classes ng-if="item.type == 'classes'" options="item.options" config-mode="item.configMode"></classes>
     </div>
     <div class="card-actions">
       <a class="btn" ng-click="item.configMode = !item.configMode">
@@ -11,7 +12,7 @@
       </a>
     </div>
   </div>
-  <a class="btn btn-default card btn-block">More</a>
+  <a class="btn btn-default card btn-block" ng-click="more()">More</a>
   <a class="btn main-settings btn-default" href="#/settings">
     <i class="mdi-navigation-more-vert"></i>
   </a>

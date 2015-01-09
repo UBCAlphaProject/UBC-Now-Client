@@ -5,7 +5,7 @@
   <li ng-repeat="event in options.events">
     <a href="{{event.link}}">
       <h4>{{event.name}}</h4>
-      <small>{{event.type}} - {{event.date}}</small>
+      <small>{{event.type}} - {{moment(event.date).fromNow()}}</small>
     </a>
   </li>
 </ul>

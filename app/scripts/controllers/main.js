@@ -22,29 +22,41 @@ angular.module('ubcNowClientApp')
         }]
       }
     }, {
-      name: 'Classes Today',
-      type: 'classes'
+      name: 'Time to Home',
+      type: 'directions'
     }];
+    var shownClasses = false;
+    $scope.more = function() {
+      if (!shownClasses) {
+        $scope.items.push({
+          name: 'Classes Today',
+          type: 'classes'
+        });
+        shownClasses = true;
+      }
+    };
     var moving = [];
-    $('body').on('mousedown', '.item', function(e) {
-      console.log('woof', e);
-      moving.push([this, e.clientX]);
+    function touchStart(e) {
+      var x = e.clientX || e.originalEvent.touches[0].pageX;
+      moving.push([this, x]);
       e.preventDefault();
-    }).on('mousemove', function(e) {
+    }
+    function touchMove(e) {
       _.each(moving, function(v) {
         var elem = v[0];
         var x = v[1];
-        var left = e.clientX - x;
+        var left = (e.clientX || e.originalEvent.touches[0].pageX) - x;
         $(elem).css({
           left: left,
           opacity: Math.abs((100)/left)
         });
       });
-    }).on('mouseup', function(e) {
+    }
+    function touchEnd(e) {
       _.each(moving, function(v) {
         var elem = v[0];
         var x = v[1];
-        var left = e.clientX - x;
+        var left = (e.clientX || e.originalEvent.changedTouches[0].pageX) - x;
         if (Math.abs(left) > 100) {
           var i = $(elem).index();
           $(elem).animate({ opacity: 0, left: left * 2, height: 0 }, {
@@ -61,5 +73,12 @@ angular.module('ubcNowClientApp')
         }
       });
       moving = [];
-    });
+    }
+    $('body')
+      .on('mousedown', '.item', touchStart)
+      .on('touchstart', '.item', touchStart)
+      .on('mousemove', touchMove)
+      .on('touchmove', touchMove)
+      .on('mouseup', touchEnd)
+      .on('touchend', touchEnd);
   });

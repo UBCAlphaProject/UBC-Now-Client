@@ -2,22 +2,20 @@
 
 /**
  * @ngdoc directive
- * @name ubcNowClientApp.directive:card/event
+ * @name ubcNowClientApp.directive:card/directions
  * @description
- * # card/event
+ * # card/directions
  */
 angular.module('ubcNowClientApp')
-  .directive('event', function () {
+  .directive('directions', function () {
     return {
-      templateUrl: 'views/cards/event.html',
+      templateUrl: 'views/cards/directions.html',
       restrict: 'E',
       scope: {
         options: '=',
         configMode: '='
       },
       link: function postLink(scope, element, attrs) {
-        // Add moment
-        scope.moment = moment;
       }
     };
   });
