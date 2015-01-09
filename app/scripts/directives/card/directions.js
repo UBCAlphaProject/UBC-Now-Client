@@ -16,6 +16,11 @@ angular.module('ubcNowClientApp')
         configMode: '='
       },
       link: function postLink(scope, element, attrs) {
+        scope.width = element.width();
+        $(window).resize(function() {
+          scope.width = element.width();
+          scope.$apply();
+        });
       }
     };
   });
