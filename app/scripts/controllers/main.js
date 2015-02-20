@@ -9,7 +9,7 @@
  * Controller of the ubcNowClientApp
  */
 angular.module('ubcNowClientApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', function ($scope, Blip) {
     $scope.items = [{
       name: 'Campus Events',
       type: 'event',
@@ -25,6 +25,9 @@ angular.module('ubcNowClientApp')
       name: 'Time to Home',
       type: 'directions'
     }];
+    Blip.list(function(blips) {
+      debugger;
+    });
     var shownClasses = false;
     $scope.more = function() {
       if (!shownClasses) {

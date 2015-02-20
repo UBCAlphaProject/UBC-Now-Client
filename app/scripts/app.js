@@ -34,4 +34,6 @@ angular
       .otherwise({
         redirectTo: '/'
       });
+  }).run(function($rootScope) {
+    $rootScope.apiEndpoint = 'http://localhost:9000';
   });
