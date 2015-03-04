@@ -9,7 +9,7 @@
  * Controller of the ubcNowClientApp
  */
 angular.module('ubcNowClientApp')
-  .controller('MainCtrl', function ($scope, Blip) {
+  .controller('MainCtrl', function ($scope, Blip, Calendar) {
     $scope.items = [{
       name: 'Campus Events',
       type: 'event',
@@ -25,6 +25,11 @@ angular.module('ubcNowClientApp')
       name: 'Time to Home',
       type: 'directions'
     }];
+    Calendar.findEvent('', '', '', new Date(), moment().add(moment.duration(2, 'weeks')), function(message) {
+      console.log(message);
+    }, function(message) {
+      console.log(message);
+    });
     Blip.list(function(blips) {
       debugger;
     });
@@ -42,7 +47,6 @@ angular.module('ubcNowClientApp')
     function touchStart(e) {
       var x = e.clientX || e.originalEvent.touches[0].pageX;
       moving.push([this, x]);
-      e.preventDefault();
     }
     function touchMove(e) {
       _.each(moving, function(v) {
@@ -50,7 +54,7 @@ angular.module('ubcNowClientApp')
         var x = v[1];
         var left = (e.clientX || e.originalEvent.touches[0].pageX) - x;
         $(elem).css({
-          left: left,
+          'transform': 'translate3d('+left+'px,0,0)',
           opacity: Math.abs((100)/left)
         });
       });
@@ -62,7 +66,7 @@ angular.module('ubcNowClientApp')
         var left = (e.clientX || e.originalEvent.changedTouches[0].pageX) - x;
         if (Math.abs(left) > 100) {
           var i = $(elem).index();
-          $(elem).animate({ opacity: 0, left: left * 2, height: 0 }, {
+          $(elem).animate({ opacity: 0, transform: 'translate3d('+left * 2+'px, 0,0)', height: 0 }, {
             complete: function() {
               $scope.items.splice(i, 1);
               $scope.$apply();
@@ -70,9 +74,8 @@ angular.module('ubcNowClientApp')
           });
         } else {
           $(elem).animate({
-            left: 0,
             opacity: 1
-          });
+          }).css({transform: 'translate3d(0,0,0)'});
         }
       });
       moving = [];

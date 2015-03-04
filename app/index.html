@@ -43,6 +43,8 @@
        ga('send', 'pageview');
     </script>
 
+    <script type="text/javascript" src="cordova.js"></script>
+
     <!-- build:js(.) scripts/oldieshim.js -->
     <!--[if lt IE 9]>
     <script src="bower_components/es5-shim/es5-shim.js"></script>
@@ -80,6 +82,7 @@
     <!-- endbower -->
     <!-- endbuild -->
 
+
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
@@ -93,6 +96,7 @@
         <script src="scripts/directives/card/classes.js"></script>
         <script src="scripts/services/blip.js"></script>
         <script src="scripts/services/group.js"></script>
+        <script src="scripts/services/calendar.js"></script>
         <!-- endbuild -->
   <script>
     $.material.init();
