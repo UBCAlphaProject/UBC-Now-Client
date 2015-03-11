@@ -22,16 +22,19 @@ angular.module('ubcNowClientApp')
         alert(JSON.stringify(e));
       }
     }, false);
-    Blip.list(function(blips) {
-      $scope.items = _.map(blips, function(blip) {
-        return {
-          name: blip.name,
-          type: 'blip',
-          options: blip
-        }
+    var refresh = function() {
+      Blip.list(function(blips) {
+        $scope.items = _.map(blips, function(blip) {
+          return {
+            name: blip.name,
+            type: 'blip',
+            options: blip
+          }
+        });
       });
-    });
+    }
     $scope.more = function() {
+      refresh();
     };
     var moving = [];
     function touchStart(e) {
