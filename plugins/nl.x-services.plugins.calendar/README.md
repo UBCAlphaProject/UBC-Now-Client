@@ -29,7 +29,7 @@ This plugin allows you to add events to the Calendar of the mobile device.
 
 ### iOS specifics
 * Supported methods: `find`, `create`, `modify`, `delete`, ..
-* All methods work without showing the native calendar. Your app never looses control.
+* All methods work without showing the native calendar. Your app never loses control.
 * Tested on iOS 6 and 7.
 
 ### Android specifics
@@ -157,7 +157,7 @@ Basic operations, you'll want to copy-paste this for testing purposes:
   calOptions.calendarName = "MyCreatedCalendar"; // iOS only
   window.plugins.calendar.createEventWithOptions(title,location,notes,startDate,endDate,calOptions,success,error);
 
-  // create an event interactively (only supported on Android)
+  // create an event interactively
   window.plugins.calendar.createEventInteractively(title,location,notes,startDate,endDate,success,error);
 
   // create an event in a named calendar (iOS only for now)

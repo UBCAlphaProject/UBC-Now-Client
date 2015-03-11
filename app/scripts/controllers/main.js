@@ -25,11 +25,17 @@ angular.module('ubcNowClientApp')
       name: 'Time to Home',
       type: 'directions'
     }];
-    Calendar.findEvent('', '', '', new Date(), moment().add(moment.duration(2, 'weeks')), function(message) {
-      console.log(message);
-    }, function(message) {
-      console.log(message);
-    });
+    document.addEventListener('deviceready', function() {
+      try {
+        window.plugins.calendar.listEventsInRange(new Date(), moment().add(moment.duration(2, 'weeks')).toDate(), function(message) {
+          alert(JSON.stringify(message));
+        }, function(message) {
+          alert(message);
+        });
+      } catch(e) {
+        alert(JSON.stringify(e));
+      }
+    }, false);
     Blip.list(function(blips) {
       debugger;
     });

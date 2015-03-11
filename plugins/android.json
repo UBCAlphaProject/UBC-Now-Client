@@ -10,7 +10,7 @@
                     "/*": [
                         {
                             "xml": "<feature name=\"Calendar\"><param name=\"android-package\" value=\"nl.xservices.plugins.Calendar\" /></feature>",
-                            "count": 1
+                            "count": 2
                         }
                     ]
                 }
@@ -20,11 +20,11 @@
                     "/manifest": [
                         {
                             "xml": "<uses-permission android:name=\"android.permission.READ_CALENDAR\" />",
-                            "count": 1
+                            "count": 2
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.WRITE_CALENDAR\" />",
-                            "count": 1
+                            "count": 2
                         }
                     ]
                 }
