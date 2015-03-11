@@ -10,21 +10,7 @@
  */
 angular.module('ubcNowClientApp')
   .controller('MainCtrl', function ($scope, Blip, Calendar) {
-    $scope.items = [{
-      name: 'Campus Events',
-      type: 'event',
-      options: {
-        events: [{
-          name: 'Student Leadership Conference',
-          type: 'Student Life',
-          date: new Date(),
-          link: 'http://students.ubc.ca/slc'
-        }]
-      }
-    }, {
-      name: 'Time to Home',
-      type: 'directions'
-    }];
+    $scope.items = [];
     document.addEventListener('deviceready', function() {
       try {
         window.plugins.calendar.listEventsInRange(new Date(), moment().add(moment.duration(2, 'weeks')).toDate(), function(message) {
@@ -37,17 +23,15 @@ angular.module('ubcNowClientApp')
       }
     }, false);
     Blip.list(function(blips) {
-      debugger;
+      $scope.items = _.map(blips, function(blip) {
+        return {
+          name: blip.name,
+          type: 'blip',
+          options: blip
+        }
+      });
     });
-    var shownClasses = false;
     $scope.more = function() {
-      if (!shownClasses) {
-        $scope.items.push({
-          name: 'Classes Today',
-          type: 'classes'
-        });
-        shownClasses = true;
-      }
     };
     var moving = [];
     function touchStart(e) {

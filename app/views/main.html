@@ -5,6 +5,7 @@
       <event ng-if="item.type == 'event'" options="item.options" config-mode="item.configMode"></event>
       <directions ng-if="item.type == 'directions'" options="item.options" config-mode="item.configMode"></directions>
       <classes ng-if="item.type == 'classes'" options="item.options" config-mode="item.configMode"></classes>
+      <blip ng-if="item.type == 'blip'" options="item.options" config-mode="item.configMode"></blip>
     </div>
     <div class="card-actions">
       <a class="btn" ng-click="item.configMode = !item.configMode">
