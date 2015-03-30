@@ -5,6 +5,6 @@ dist
 bower_components
 
 platforms/**/
-www
-!www/config.xml
-!www/res
+./www
+!./www/config.xml
+!./www/res

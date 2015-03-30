@@ -1,0 +1,21 @@
+<ion-view view-title="UBCNow">
+  <ion-content>
+    <div class="card list item card-default" ng-repeat="item in items">
+      <div class="item item-avatar">
+        <!-- <img src="mcfly.jpg"> -->
+        <a class="button button-clear button-stable pull-right" ng-click="item.configMode = !item.configMode">
+          <i class="icon ion-ios-gear"></i>
+        </a>
+        <h2>{{item.name}}</h2>
+        <p>{{item.date}}</p>
+      </div>
+      <div class="item item-body">
+        <event ng-if="item.type == 'event'" options="item.options" config-mode="item.configMode"></event>
+        <directions ng-if="item.type == 'directions'" options="item.options" config-mode="item.configMode"></directions>
+        <classes ng-if="item.type == 'classes'" options="item.options" config-mode="item.configMode"></classes>
+        <blip ng-if="item.type == 'blip'" options="item.options" config-mode="item.configMode"></blip>
+      </div>
+    </div>
+    <button class="button button-block button-stable" ng-click="more()">More</button>
+  </ion-content>
+</ion-view>
