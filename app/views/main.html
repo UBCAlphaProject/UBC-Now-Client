@@ -1,7 +1,7 @@
 <div class="feed">
   <div class="card item card-default" ng-repeat="item in items">
     <div class="card-body">
-      <h3>{{item.name}}</h3>
+      <h3>{{item.name}} <small>{{item.date}}</small></h3>
       <event ng-if="item.type == 'event'" options="item.options" config-mode="item.configMode"></event>
       <directions ng-if="item.type == 'directions'" options="item.options" config-mode="item.configMode"></directions>
       <classes ng-if="item.type == 'classes'" options="item.options" config-mode="item.configMode"></classes>

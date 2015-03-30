@@ -24,15 +24,18 @@ angular.module('ubcNowClientApp')
     }, false);
     var refresh = function() {
       Blip.list(function(blips) {
+        console.log(blips);
         $scope.items = _.map(blips, function(blip) {
           return {
-            name: blip.name,
+            name: blip.title,
+            date: blip.time ? moment(blip.time).fromNow() : "",
             type: 'blip',
             options: blip
           }
         });
       });
     }
+    refresh();
     $scope.more = function() {
       refresh();
     };
