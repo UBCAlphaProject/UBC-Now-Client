@@ -4,14 +4,32 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers','starter.services', 'starter.directives', 'uiGmapgoogle-maps'])
+angular.module('starter', ['ionic', 'starter.controllers','starter.services', 'starter.directives', 'uiGmapgoogle-maps', 'ngCordova'])
 
-.run(function($ionicPlatform, $rootScope) {
+.run(function($ionicPlatform, $rootScope, $cordovaLocalNotification, $cordovaCalendar) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if (window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+    }
+    if (window.cordova) {
+      $cordovaLocalNotification.add({
+        id: 'some_notification_id',
+        title: "Some AMS Event",
+        text: "In 15 seconds!",
+        firstAt: moment().add(15, 'seconds').toDate(),
+      }).then(function () {
+        console.log('callback for adding background notification');
+      });
+      $cordovaCalendar.listEventsInRange(
+        moment().toDate(),
+        moment().add(1, 'month').toDate()
+      ).then(function (result) {
+        alert(JSON.stringify(result));
+      }, function (err) {
+        alert(JSON.stringify(error));
+      });
     }
     if (window.StatusBar) {
       // org.apache.cordova.statusbar required
@@ -52,6 +70,15 @@ angular.module('starter', ['ionic', 'starter.controllers','starter.services', 's
     views: {
       'menuContent': {
         templateUrl: "templates/settings.html"
+      }
+    }
+  })
+
+  .state('app.admin', {
+    url: "/admin",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/admin.html"
       }
     }
   });

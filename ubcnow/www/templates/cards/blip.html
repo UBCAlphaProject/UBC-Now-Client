@@ -2,7 +2,7 @@
   Config Options go here
 </div>
 <a ng-href="{{options.link}}">{{options.summary}}</a>
-<ui-gmap-google-map center='map.center' zoom='map.zoom' draggable='true' ng-if="options.lat">
-  <ui-gmap-marker coords="map.center" idKey="options.id">
+<ui-gmap-google-map center='map.center' zoom='map.zoom' on-drag-left="nodrag($event)" on-drag-right="nodrag($event)" on-touch="nodrag($event)" ng-if="options.lat">
+  <ui-gmap-marker coords="marker.center" idKey="options.id">
   </ui-gmap-marker>
 </ui-gmap-google-map>

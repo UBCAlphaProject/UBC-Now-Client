@@ -25,12 +25,27 @@ angular.module('starter.directives')
           },
           zoom: 14,
         };
+        scope.marker =  {
+          center: {
+            latitude: 120,
+            longitude: 43
+          },
+        };
         scope.$watch('options', function(options) {
           scope.map.center = {
             latitude: options.lat,
             longitude: options.lng
           };
+          scope.marker.center = {
+            latitude: options.lat,
+            longitude: options.lng
+          };
         });
+        // This doesn't work.
+        scope.nodrag = function(e) {
+          e.stopImmediatePropagation();
+          e.preventDefault();
+        };
       }
     };
   });

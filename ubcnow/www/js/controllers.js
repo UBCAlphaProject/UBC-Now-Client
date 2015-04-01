@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['ngCordova'])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout, Blip) {
   // Form data for the login modal
@@ -33,19 +33,6 @@ angular.module('starter.controllers', [])
   };
 
     $scope.items = [];
-    /*
-    document.addEventListener('deviceready', function() {
-      try {
-        window.plugins.calendar.listEventsInRange(new Date(), moment().add(moment.duration(2, 'weeks')).toDate(), function(message) {
-          alert(JSON.stringify(message));
-        }, function(message) {
-          alert(message);
-        });
-      } catch(e) {
-        alert(JSON.stringify(e));
-      }
-    }, false);
-    */
     var refresh = function() {
       Blip.list(function(blips) {
         console.log(blips);
@@ -63,48 +50,35 @@ angular.module('starter.controllers', [])
     $scope.more = function() {
       refresh();
     };
-    var moving = [];
-    function touchStart(e) {
-      var x = e.clientX || e.originalEvent.touches[0].pageX;
-      moving.push([this, x]);
-    }
-    function touchMove(e) {
-      _.each(moving, function(v) {
-        var elem = v[0];
-        var x = v[1];
-        var left = (e.clientX || e.originalEvent.touches[0].pageX) - x;
-        $(elem).css({
-          'transform': 'translate3d('+left+'px,0,0)',
-          opacity: Math.abs((100)/left)
+    $scope.drag = function(e) {
+      var elem = $(e.target).parents('.card-default');
+      elem.data('moving', true)
+      var left = e.gesture.deltaX;
+      elem.css({
+        'transform': 'translate3d('+left+'px,0,0)',
+        opacity: Math.abs((100)/left)
+      });
+      e.stopPropagation();
+    };
+    $scope.touchEnd = function(e) {
+      var elem = $(e.target).parents('.card-default');
+      if (!elem.data().moving) {
+        return;
+      }
+      elem.data('moving', false);
+      var left = e.gesture.deltaX;
+      if (Math.abs(left) > 100) {
+        var i = elem.index();
+        elem.animate({ opacity: 0, transform: 'translate3d('+left * 2+'px, 0,0)', height: 0 }, {
+          complete: function() {
+            $scope.items.splice(i, 1);
+            $scope.$apply();
+          }
         });
-      });
-    }
-    function touchEnd(e) {
-      _.each(moving, function(v) {
-        var elem = v[0];
-        var x = v[1];
-        var left = (e.clientX || e.originalEvent.changedTouches[0].pageX) - x;
-        if (Math.abs(left) > 100) {
-          var i = $(elem).index();
-          $(elem).animate({ opacity: 0, transform: 'translate3d('+left * 2+'px, 0,0)', height: 0 }, {
-            complete: function() {
-              $scope.items.splice(i, 1);
-              $scope.$apply();
-            }
-          });
-        } else {
-          $(elem).animate({
-            opacity: 1
-          }).css({transform: 'translate3d(0,0,0)'});
-        }
-      });
-      moving = [];
-    }
-    $('body')
-      .on('mousedown', '.card-default', touchStart)
-      .on('touchstart', '.card-default', touchStart)
-      .on('mousemove', touchMove)
-      .on('touchmove', touchMove)
-      .on('mouseup', touchEnd)
-      .on('touchend', touchEnd);
+      } else {
+        elem.animate({
+          opacity: 1
+        }).css({transform: 'translate3d(0,0,0)'});
+      }
+    };
 });
