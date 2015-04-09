@@ -1,0 +1,172 @@
+/* line 1, ../../app/styles/main.scss */
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+/* Space out content a bit */
+/* line 9, ../../app/styles/main.scss */
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-family: 'Open Sans';
+  background: url("../images/background2.png") no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* line 22, ../../app/styles/main.scss */
+directions {
+  display: block;
+}
+
+/* line 26, ../../app/styles/main.scss */
+.main-settings {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+/* line 31, ../../app/styles/main.scss */
+.header {
+  color: white;
+  border-color: white;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+/* line 37, ../../app/styles/main.scss */
+.header,
+.marketing,
+.footer {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Custom page header */
+/* line 45, ../../app/styles/main.scss */
+.header {
+  border-bottom: 1px solid #e5e5e5;
+  /* Make the masthead heading the same height as the navigation */
+}
+/* line 49, ../../app/styles/main.scss */
+.header h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+  padding-bottom: 19px;
+}
+
+/* Custom page footer */
+/* line 58, ../../app/styles/main.scss */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+
+/* line 64, ../../app/styles/main.scss */
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+/* line 69, ../../app/styles/main.scss */
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+/* line 73, ../../app/styles/main.scss */
+.jumbotron .btn {
+  font-size: 21px;
+  padding: 14px 24px;
+}
+
+/* Supporting marketing content */
+/* line 80, ../../app/styles/main.scss */
+.marketing {
+  margin: 40px 0;
+}
+/* line 83, ../../app/styles/main.scss */
+.marketing p + h4 {
+  margin-top: 28px;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  /* line 90, ../../app/styles/main.scss */
+  .container {
+    max-width: 730px;
+  }
+
+  /* Remove the padding we set earlier */
+  /* line 95, ../../app/styles/main.scss */
+  .header,
+  .marketing,
+  .footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* Space out the masthead */
+  /* line 102, ../../app/styles/main.scss */
+  .header {
+    margin-bottom: 30px;
+  }
+
+  /* Remove the bottom border on the jumbotron for visual effect */
+  /* line 106, ../../app/styles/main.scss */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}
+/* line 115, ../../app/styles/main.scss */
+.feed > a {
+  background-color: white !important;
+  margin-top: 0;
+}
+/* line 119, ../../app/styles/main.scss */
+.feed .item {
+  position: relative;
+  margin-bottom: 10px;
+}
+/* line 122, ../../app/styles/main.scss */
+.feed .item h3 {
+  margin-top: 0;
+  border-bottom: 1px solid #ccc;
+}
+/* line 126, ../../app/styles/main.scss */
+.feed .item .config {
+  max-height: 0;
+  overflow: hidden;
+  margin: 0 -18px;
+  padding: 0 18px;
+  background-color: #eee;
+  transition: max-height 0.2s;
+}
+/* line 134, ../../app/styles/main.scss */
+.feed .item .config.visible {
+  max-height: 10000px;
+}
+/* line 138, ../../app/styles/main.scss */
+.feed .item .card-actions {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+/* line 142, ../../app/styles/main.scss */
+.feed .item .card-actions a {
+  padding: 5px;
+  margin: 0;
+}
+/* line 145, ../../app/styles/main.scss */
+.feed .item .card-actions a i {
+  font-size: 14pt;
+}
+
+/* line 152, ../../app/styles/main.scss */
+ul.events {
+  list-style-type: none;
+  margin: 0;
+  padding: 10px;
+}

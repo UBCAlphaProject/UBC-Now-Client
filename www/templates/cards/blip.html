@@ -1,0 +1,15 @@
+
+<div ng-class="{visible: configMode}" class="config item item-body">
+  Config Options go here
+</div>
+<div class="item item-body">
+  <a ng-href="{{options.link}}">{{options.summary}}</a>
+  <ui-gmap-google-map center='map.center' zoom='map.zoom' on-drag-left="nodrag($event)" on-drag-right="nodrag($event)" on-touch="nodrag($event)" ng-if="options.lat">
+    <ui-gmap-marker coords="marker.center" idKey="options.id">
+    </ui-gmap-marker>
+  </ui-gmap-google-map>
+</div>
+<div class="item item-body">
+  <h2>Updates</h2>
+
+</div>
