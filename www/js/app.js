@@ -36,7 +36,7 @@ angular.module('starter', ['ionic', 'starter.controllers','starter.services', 's
       StatusBar.styleDefault();
     }
   });
-  $rootScope.apiEndpoint = 'http://localhost:9000';
+  $rootScope.apiEndpoint = 'https://alphaproject.me/ubcnow';
 })
 
 .config(function(uiGmapGoogleMapApiProvider) {
