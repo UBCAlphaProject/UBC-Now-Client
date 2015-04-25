@@ -3,12 +3,6 @@
     <div class="card list item card-default" ng-repeat="item in items" on-drag-left="drag($event)" on-drag-right="drag($event)" on-release="touchEnd($event)" on-tap="item.expand = !item.expand">
       <div class="item item-avatar">
         <!-- <img src="mcfly.jpg"> -->
-        <a class="button button-clear button-stable pull-right" on-tap="item.configMode = !item.configMode">
-          <i class="icon ion-android-more-vertical"></i>
-        </a>
-        <a class="button button-clear button-stable pull-right">
-          <i class="icon ion-android-close"></i>
-        </a>
         <a class="button button-clear button-stable pull-right">
           <i class="icon ion-android-done"></i>
         </a>

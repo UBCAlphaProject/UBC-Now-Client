@@ -9,7 +9,7 @@
     display: none; }
 
 .card {
-  padding: 0 !important; }
+  padding: 0; }
 
 ion-view {
   background: url("../img/background2.png") no-repeat center center fixed;
@@ -21,10 +21,18 @@ ion-view {
 .angular-google-map-container {
   height: 320px; }
 
+.card {
+  margin: 10px !important; }
+  .card .button-clear {
+    padding: 0; }
+
+.button-block {
+  margin: 10px !important; }
+
 @media screen and (min-width: 768px) {
   .card {
     max-width: 720px;
-    margin: 20px auto !important; }
+    margin: 10px auto !important; }
   .button-block {
     max-width: 720px;
-    margin: 20px auto !important; } }
+    margin: 10px auto !important; } }
